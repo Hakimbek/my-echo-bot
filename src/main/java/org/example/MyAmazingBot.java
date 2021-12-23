@@ -1,15 +1,18 @@
 package org.example;
 
+import org.telegram.telegrambots.api.methods.send.SendMessage;
+import org.telegram.telegrambots.api.methods.send.SendPhoto;
+import org.telegram.telegrambots.api.objects.PhotoSize;
+import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
-import org.telegram.telegrambots.meta.api.objects.PhotoSize;
-import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.telegram.telegrambots.exceptions.TelegramApiException;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Level;
+
+import static org.telegram.telegrambots.logging.BotLogger.log;
 
 public class MyAmazingBot extends TelegramLongPollingBot {
 
@@ -31,7 +34,7 @@ public class MyAmazingBot extends TelegramLongPollingBot {
                 // Sending our message object to user
                 execute(message);
             } catch (TelegramApiException e) {
-                e.printStackTrace();
+                log(Level.SEVERE, "Exception: ", e.toString());
             }
         } else if (update.hasMessage() && update.getMessage().hasPhoto()) {
             // Message contains photo
@@ -63,9 +66,9 @@ public class MyAmazingBot extends TelegramLongPollingBot {
 
             try {
                 // Call method to send the photo with caption
-                execute(sendPhoto);
+                sendPhoto(sendPhoto);
             } catch (TelegramApiException e) {
-                e.printStackTrace();
+                log(Level.SEVERE, "Exception: ", e.toString());
             }
         }
 

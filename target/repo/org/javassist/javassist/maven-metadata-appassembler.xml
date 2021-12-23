@@ -3,10 +3,10 @@
   <groupId>org.javassist</groupId>
   <artifactId>javassist</artifactId>
   <versioning>
-    <release>3.22.0-CR2</release>
+    <release>3.20.0-GA</release>
     <versions>
-      <version>3.22.0-CR2</version>
+      <version>3.20.0-GA</version>
     </versions>
-    <lastUpdated>20211223054238</lastUpdated>
+    <lastUpdated>20211223065709</lastUpdated>
   </versioning>
 </metadata>
